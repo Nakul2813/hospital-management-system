@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-200;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-clinical-200 text-clinical-900;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.clinical.500");
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-clinical-600 px-5 py-2.5 text-sm font-semibold text-white shadow-soft transition-all hover:bg-clinical-700 hover:shadow-glow active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 shadow-soft ring-1 ring-ink-200 transition-all hover:bg-ink-50 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-medium text-ink-600 transition-colors hover:bg-ink-100 hover:text-ink-900;
+  }
+  .card {
+    @apply rounded-2xl bg-white p-6 shadow-card ring-1 ring-ink-100;
+  }
+  .input-field {
+    @apply w-full rounded-xl border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 transition-colors focus:border-clinical-500 focus:outline-none focus:ring-2 focus:ring-clinical-100;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-700;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
