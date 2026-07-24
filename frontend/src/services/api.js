@@ -1,7 +1,11 @@
 import axios from "axios";
 
+// Leave VITE_API_URL unset locally to use Vite's /api proxy.
+// Set it on Vercel to the deployed backend URL, including the /api/v1 path.
+const apiBaseUrl = import.meta.env.VITE_API_URL || "/api/v1";
+
 const api = axios.create({
-  baseURL: "/api/v1",
+  baseURL: apiBaseUrl,
   withCredentials: true, // send httpOnly cookies
   headers: { "Content-Type": "application/json" },
 });

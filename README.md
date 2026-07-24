@@ -113,3 +113,13 @@ hospital-management-system/
 
 ## API Documentation
 See [docs/API.md](docs/API.md) for full endpoint reference.
+
+## Deployment
+
+Deploy the frontend to Vercel as a project with `frontend` set as its **Root Directory**. The
+frontend-specific `vercel.json` provides the single-page app fallback. In the Vercel project's
+environment variables, set `VITE_API_URL` to the public backend API URL, including `/api/v1`.
+
+Deploy `backend` to a Node.js host that supports persistent servers (such as Render or Railway),
+then set its `CLIENT_URL` environment variable to the Vercel frontend URL. Configure its MongoDB,
+JWT, cookie, email, and Cloudinary environment variables from `backend/.env.example` as needed.
