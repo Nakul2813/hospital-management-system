@@ -116,10 +116,11 @@ See [docs/API.md](docs/API.md) for full endpoint reference.
 
 ## Deployment
 
-Deploy the frontend to Vercel as a project with `frontend` set as its **Root Directory**. The
-frontend-specific `vercel.json` provides the single-page app fallback. In the Vercel project's
-environment variables, set `VITE_API_URL` to the public backend API URL, including `/api/v1`.
+This repository deploys to Vercel as one **Services** project. The root `vercel.json` builds the
+Vite frontend and Express backend separately, then routes `/api/*` to the backend and all other
+requests to the frontend on the same domain.
 
-Deploy `backend` to a Node.js host that supports persistent servers (such as Render or Railway),
-then set its `CLIENT_URL` environment variable to the Vercel frontend URL. Configure its MongoDB,
-JWT, cookie, email, and Cloudinary environment variables from `backend/.env.example` as needed.
+In Vercel, leave the **Root Directory** empty (the repository root) and set the **Framework
+Preset** to **Services**. Configure the backend environment variables from `backend/.env.example`,
+including `MONGO_URI`, the JWT secrets, and `COOKIE_SECRET`. Set `CLIENT_URL` to the final Vercel
+domain after the first deployment. Do not set `VITE_API_URL` unless the API is hosted elsewhere.
